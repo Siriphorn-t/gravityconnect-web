@@ -16,10 +16,10 @@
             background: linear-gradient(to bottom, rgba(2,12,24,0.3) 0%, rgba(2,12,24,0.6) 50%, rgba(2,12,24,0.95) 80%, #020C18 100%),
                         url('cover.jpg') center top / cover no-repeat;
         }
-        .logo { width: 80px; height: 80px; border-radius: 50%; background: #fff;
-                display: flex; align-items: center; justify-content: center;
+        .logo { width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
                 box-shadow: 0 0 40px rgba(255,179,0,0.15), 0 0 80px rgba(0,200,255,0.08);
-                margin-bottom: 30px; font-size: 28px; font-weight: 700; color: #020C18; }
+                margin-bottom: 30px; }
+        .logo img { width: 100%; height: 100%; object-fit: cover; }
         h1 { font-size: 2.8em; font-weight: 200; letter-spacing: 12px; margin-bottom: 12px; }
         .divider { width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #FFB300, transparent); margin: 0 auto 12px; }
         .tagline { color: rgba(255,255,255,0.25); font-size: 0.85em; letter-spacing: 3px; font-weight: 300; }
@@ -65,7 +65,7 @@
 
 <!-- Hero -->
 <section class="hero">
-    <div class="logo">Gv</div>
+    <div class="logo"><img src="logo.jpg" alt="Gravity Logo"></div>
     <h1>GRAVITY</h1>
     <div class="divider"></div>
     <p class="tagline">EVERYTHING HAPPENING AROUND YOU</p>
