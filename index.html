@@ -1,26 +1,165 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gravity - Everything Happening Around You</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #020C18; color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center; }
-        .container { max-width: 600px; padding: 40px 20px; }
-        h1 { font-size: 2.5em; font-weight: 200; letter-spacing: 10px; margin-bottom: 10px; }
-        .tagline { color: rgba(255,255,255,0.4); font-size: 0.9em; letter-spacing: 2px; }
-        .desc { color: rgba(255,255,255,0.6); line-height: 1.8; margin: 30px 0; }
-        a { color: #FFB300; text-decoration: none; }
-        .contact { margin-top: 40px; color: rgba(255,255,255,0.4); font-size: 0.85em; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #020C18; color: #ffffff; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, rgba(2,12,24,0.3) 0%, rgba(2,12,24,0.6) 50%, rgba(2,12,24,0.95) 80%, #020C18 100%),
+                        url('cover.jpg') center top / cover no-repeat;
+        }
+        .logo { width: 80px; height: 80px; border-radius: 50%; background: #fff;
+                display: flex; align-items: center; justify-content: center;
+                box-shadow: 0 0 40px rgba(255,179,0,0.15), 0 0 80px rgba(0,200,255,0.08);
+                margin-bottom: 30px; font-size: 28px; font-weight: 700; color: #020C18; }
+        h1 { font-size: 2.8em; font-weight: 200; letter-spacing: 12px; margin-bottom: 12px; }
+        .divider { width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #FFB300, transparent); margin: 0 auto 12px; }
+        .tagline { color: rgba(255,255,255,0.25); font-size: 0.85em; letter-spacing: 3px; font-weight: 300; }
+        .hero-desc { color: rgba(255,255,255,0.5); line-height: 1.9; margin: 40px auto; max-width: 520px; font-size: 1.05em; }
+
+        /* Features */
+        .features { display: flex; gap: 30px; margin: 50px auto; max-width: 700px; flex-wrap: wrap; justify-content: center; }
+        .feature { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+                   border-radius: 16px; padding: 30px 24px; width: 200px; text-align: center; }
+        .feature-icon { font-size: 2em; margin-bottom: 12px; }
+        .feature h3 { font-size: 0.95em; font-weight: 500; margin-bottom: 8px; }
+        .feature p { font-size: 0.8em; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+        /* Download */
+        .download { margin: 40px 0 60px; }
+        .btn { display: inline-block; padding: 14px 36px; border-radius: 30px;
+               background: linear-gradient(135deg, #00C8FF, #0088CC); color: #fff;
+               text-decoration: none; font-weight: 500; font-size: 0.95em; letter-spacing: 1px;
+               transition: transform 0.2s, box-shadow 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,200,255,0.3); }
+
+        /* Sections */
+        .section { max-width: 700px; margin: 0 auto; padding: 60px 24px; }
+        .section h2 { font-size: 1.4em; font-weight: 300; letter-spacing: 4px; margin-bottom: 30px;
+                      text-align: center; color: #FFB300; }
+        .section p, .section li { color: rgba(255,255,255,0.55); line-height: 1.9; font-size: 0.92em; margin-bottom: 12px; }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 8px; }
+        .section-divider { width: 100%; height: 1px; background: rgba(255,255,255,0.05); margin: 0 auto; }
+
+        /* Footer */
+        footer { text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.25); font-size: 0.8em; }
+        footer a { color: #FFB300; text-decoration: none; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; letter-spacing: 8px; }
+            .features { flex-direction: column; align-items: center; }
+            .feature { width: 280px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>GRAVITY</h1>
-        <p class="tagline">Everything Happening Around You</p>
-        <p class="desc">Gravity is a social platform connecting location, people, and stories. Exchange digital GV Cards, discover people nearby, and build meaningful connections in the real world.</p>
-        <p><a href="https://sites.google.com/view/gravityconnect">Privacy Policy</a></p>
-        <p class="contact">Contact: gravity.connect.app@gmail.com</p>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="logo">Gv</div>
+    <h1>GRAVITY</h1>
+    <div class="divider"></div>
+    <p class="tagline">EVERYTHING HAPPENING AROUND YOU</p>
+    <p class="hero-desc">
+        A social platform that connects people through real-world proximity.
+        Exchange digital GV Cards, discover stories nearby, and build meaningful connections.
+    </p>
+
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">&#127183;</div>
+            <h3>GV Cards</h3>
+            <p>Collect and exchange beautifully designed digital cards with unique skins</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#128205;</div>
+            <h3>Nearby</h3>
+            <p>Discover people and stories happening around your location</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#128293;</div>
+            <h3>Connect</h3>
+            <p>Build real connections through proximity-based social interaction</p>
+        </div>
     </div>
+
+    <div class="download">
+        <a href="https://play.google.com/store/apps/details?id=com.gravity.connect" class="btn">GET IT ON GOOGLE PLAY</a>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Privacy Policy -->
+<section class="section" id="privacy">
+    <h2>PRIVACY POLICY</h2>
+    <p><strong>Last updated: April 3, 2026</strong></p>
+
+    <p>Gravity Connect Co. ("we", "our", or "us") operates the Gravity mobile application. This Privacy Policy explains how we collect, use, and protect your information.</p>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">1. Information We Collect</h3>
+    <ul>
+        <li><strong>Account information:</strong> name, email address, profile photo, and gender (optional) when you create an account</li>
+        <li><strong>Location data:</strong> approximate and precise location to enable nearby discovery features</li>
+        <li><strong>User-generated content:</strong> GV Cards, messages, and other content you create</li>
+        <li><strong>Device information:</strong> device type, operating system, and app interaction data</li>
+        <li><strong>Purchase history:</strong> in-app purchase records processed through Google Play</li>
+    </ul>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">2. How We Use Your Information</h3>
+    <ul>
+        <li>Provide and improve our services</li>
+        <li>Enable location-based features and nearby discovery</li>
+        <li>Process in-app purchases</li>
+        <li>Send push notifications (with your permission)</li>
+        <li>Ensure safety and prevent misuse</li>
+    </ul>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">3. Data Sharing</h3>
+    <p>We do not sell your personal data. We may share limited data with:</p>
+    <ul>
+        <li>Firebase (Google) for authentication, database, and analytics</li>
+        <li>Google Play for payment processing</li>
+        <li>Other users (only your public profile information and shared content)</li>
+    </ul>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">4. Data Security</h3>
+    <p>All data is transmitted over HTTPS encryption. We use Firebase's security infrastructure to protect your data. However, no method of electronic transmission is 100% secure.</p>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">5. Your Rights</h3>
+    <ul>
+        <li>Access, update, or delete your personal information through the app settings</li>
+        <li>Opt out of location services at any time</li>
+        <li>Request account deletion by contacting us</li>
+    </ul>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">6. Children's Safety</h3>
+    <p>Gravity is intended for users aged 16 and above. We do not knowingly collect information from children under 16. If we learn that we have collected data from a child under 16, we will delete it promptly.</p>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">7. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes through the app or by email.</p>
+
+    <h3 style="color:rgba(255,255,255,0.7); margin: 24px 0 12px; font-size: 1em;">8. Contact Us</h3>
+    <p>If you have any questions about this Privacy Policy, please contact us at:<br>
+    <strong>Email:</strong> gravity.connect.app@gmail.com</p>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2026 Gravity Connect Co. All rights reserved.</p>
+    <p style="margin-top: 8px;"><a href="#privacy">Privacy Policy</a></p>
+</footer>
+
 </body>
 </html>
