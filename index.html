@@ -34,12 +34,10 @@
         .feature p { font-size: 0.8em; color: rgba(255,255,255,0.4); line-height: 1.6; }
 
         /* Download */
-        .download { margin: 40px 0 60px; }
-        .btn { display: inline-block; padding: 14px 36px; border-radius: 30px;
-               background: linear-gradient(135deg, #00C8FF, #0088CC); color: #fff;
-               text-decoration: none; font-weight: 500; font-size: 0.95em; letter-spacing: 1px;
-               transition: transform 0.2s, box-shadow 0.2s; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,200,255,0.3); }
+        .download { margin: 40px 0 60px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center; }
+        .badge-link { display: inline-block; transition: transform 0.2s, opacity 0.2s; }
+        .badge-link:hover { transform: translateY(-3px); opacity: 0.85; }
+        .badge-link img { height: 52px; width: auto; display: block; }
 
         /* Sections */
         .section { max-width: 700px; margin: 0 auto; padding: 60px 24px; }
@@ -139,7 +137,16 @@
     </div>
 
     <div class="download">
-        <a href="https://play.google.com/store/apps/details?id=com.gravity.connect" class="btn">GET IT ON GOOGLE PLAY</a>
+        <!-- App Store -->
+        <a class="badge-link">
+            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                 alt="Download on the App Store">
+        </a>
+        <!-- Google Play -->
+        <a href="https://play.google.com/store/apps/details?id=com.gravity.connect" class="badge-link" target="_blank">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                 alt="Get it on Google Play" style="height: 76px;">
+        </a>
     </div>
 </section>
 
