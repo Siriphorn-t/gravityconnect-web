@@ -103,6 +103,33 @@
             .feature { width: 280px; }
             .gv-how { padding: 24px 18px; }
         }
+
+        /* Commerce info (for DBD e-commerce registration) */
+        .commerce-section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+        .commerce-card { background:#ffffff; color:#1a1a1a; border-radius:14px; padding:40px 36px; }
+        .commerce-title { font-size:1.2em; font-weight:600; text-align:center; margin-bottom:6px; color:#111; }
+        .commerce-sub { text-align:center; color:#666; font-size:0.85em; margin-bottom:30px; }
+        .ci-item { display:flex; gap:16px; padding:22px 0; border-top:1px solid #eee; }
+        .ci-item:first-of-type { border-top:none; padding-top:6px; }
+        .ci-num { flex:none; width:30px; height:30px; border-radius:50%; background:#FFB300; color:#fff;
+                  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.95em; }
+        .ci-body { flex:1; }
+        .ci-body h3 { font-size:1.02em; color:#111; margin-bottom:8px; font-weight:600; }
+        .ci-body p, .ci-body li { color:#444; line-height:1.75; font-size:0.92em; }
+        .ci-body ul { padding-left:20px; margin-top:4px; }
+        .product { display:flex; align-items:center; justify-content:space-between; gap:16px;
+                   margin-top:14px; padding:12px 14px; background:#f6f6f6; border-radius:10px; }
+        .product-imgs { display:flex; gap:8px; flex-wrap:wrap; }
+        .product-imgs img { width:50px; height:auto; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.18); }
+        .product-info { text-align:right; flex:none; }
+        .product-name { font-weight:600; color:#111; font-size:0.95em; }
+        .product-price { color:#C77800; font-weight:700; font-size:1.05em; margin-top:2px; white-space:nowrap; }
+        @media print {
+            body { background:#fff !important; }
+            body > *:not(#commerce-info) { display:none !important; }
+            .commerce-section { padding:0; max-width:100%; }
+            .commerce-card { border-radius:0; padding:10px 0; }
+        }
     </style>
 </head>
 <body>
@@ -242,6 +269,82 @@
             </div>
         </div>
     </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ข้อมูลพาณิชย์อิเล็กทรอนิกส์ (สำหรับจดทะเบียนพาณิชย์) -->
+<section class="commerce-section" id="commerce-info">
+  <div class="commerce-card">
+    <h2 class="commerce-title">ข้อมูลการประกอบพาณิชยกิจ (พาณิชย์อิเล็กทรอนิกส์)</h2>
+    <p class="commerce-sub">Gravity Connect · gravityconnect.app</p>
+
+    <div class="ci-item">
+      <div class="ci-num">1</div>
+      <div class="ci-body">
+        <h3>สินค้า/บริการที่จำหน่าย</h3>
+        <p>การ์ดดิจิทัลพรีเมียม (GV Card) — สกินการ์ดแบบพิเศษภายในแอปพลิเคชัน Gravity Connect สำหรับใช้แสดงตัวตนและแลกเปลี่ยนกับผู้อื่น</p>
+        <div class="product">
+          <div class="product-imgs">
+            <img src="cards/gv01vip1.png" alt="การ์ด Pro">
+            <img src="cards/gv04vip1.png" alt="การ์ด Pro">
+            <img src="cards/gv05vip1.png" alt="การ์ด Pro">
+            <img src="cards/gv09vip1.png" alt="การ์ด Pro">
+          </div>
+          <div class="product-info">
+            <div class="product-name">การ์ด Pro</div>
+            <div class="product-price">59 บาท / ใบ</div>
+          </div>
+        </div>
+        <div class="product">
+          <div class="product-imgs">
+            <img src="cards/gv08vip2.png" alt="การ์ด Ultra">
+            <img src="cards/gv16vip2.png" alt="การ์ด Ultra">
+            <img src="cards/gv17vip2.png" alt="การ์ด Ultra">
+          </div>
+          <div class="product-info">
+            <div class="product-name">การ์ด Ultra</div>
+            <div class="product-price">199 บาท / ใบ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ci-item">
+      <div class="ci-num">2</div>
+      <div class="ci-body">
+        <h3>ช่องทางการสั่งซื้อสินค้า</h3>
+        <p>สั่งซื้อผ่านระบบซื้อภายในแอปพลิเคชัน (In-App Purchase) ของแอป Gravity Connect ซึ่งดาวน์โหลดได้จาก App Store — โดยเลือกการ์ดที่ต้องการภายในแอปแล้วกดสั่งซื้อ</p>
+      </div>
+    </div>
+
+    <div class="ci-item">
+      <div class="ci-num">3</div>
+      <div class="ci-body">
+        <h3>วิธีการชำระเงิน</h3>
+        <p>ชำระเงินผ่านระบบชำระเงินของ App Store (Apple In-App Purchase) โดยตัดผ่านบัญชี Apple ID ของผู้ซื้อ (บัตรเครดิต/เดบิต หรือช่องทางที่ผูกไว้กับบัญชี Apple)</p>
+      </div>
+    </div>
+
+    <div class="ci-item">
+      <div class="ci-num">4</div>
+      <div class="ci-body">
+        <h3>วิธีการจัดส่งสินค้า</h3>
+        <p>เป็นสินค้าดิจิทัล ระบบจะส่งมอบ/ปลดล็อกการ์ดให้ทันทีโดยอัตโนมัติภายในแอปพลิเคชันหลังชำระเงินสำเร็จ ไม่มีการจัดส่งสินค้าทางกายภาพ</p>
+      </div>
+    </div>
+
+    <div class="ci-item">
+      <div class="ci-num">5</div>
+      <div class="ci-body">
+        <h3>ราคาสินค้า</h3>
+        <ul>
+          <li>การ์ด Pro — 59 บาท / ใบ</li>
+          <li>การ์ด Ultra — 199 บาท / ใบ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="section-divider"></div>
