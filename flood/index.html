@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ดาวน์โหลด Gravity โหมดภัยพิบัติน้ำท่วมน่าน — iOS และ Android">
+<title>Gravity โหมดภัยพิบัติ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#EAF1F8; --surface:#FFFFFF; --surface-2:#F4F8FC;
+    --ink:#0C1E33; --muted:#5A7286; --line:#D7E3EE;
+    --brand:#1E88E5; --brand-deep:#1565C0; --cyan:#17B6D6;
+    --danger:#E53935; --danger-deep:#C62828; --gold:#FFC107;
+    --ok:#2E7D32; --ink-btn:#0C1E33;
+    --shadow:0 18px 50px -24px rgba(12,30,51,.45);
+    --shadow-sm:0 4px 18px -10px rgba(12,30,51,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0A1A2C; --surface:#122A42; --surface-2:#0F2338;
+      --ink:#E9F2FB; --muted:#93A9BF; --line:#22415E;
+      --brand:#39A7F2; --brand-deep:#2E7DF0; --cyan:#2AC6E6;
+      --danger:#FF6B60; --danger-deep:#E53935; --gold:#FFD24A;
+      --ok:#5FC466; --ink-btn:#0C1E33;
+      --shadow:0 22px 60px -28px rgba(0,0,0,.7);
+      --shadow-sm:0 6px 22px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0A1A2C; --surface:#122A42; --surface-2:#0F2338;
+    --ink:#E9F2FB; --muted:#93A9BF; --line:#22415E;
+    --brand:#39A7F2; --brand-deep:#2E7DF0; --cyan:#2AC6E6;
+    --danger:#FF6B60; --danger-deep:#E53935; --gold:#FFD24A;
+    --ok:#5FC466; --ink-btn:#0C1E33;
+    --shadow:0 22px 60px -28px rgba(0,0,0,.7);
+    --shadow-sm:0 6px 22px -12px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans Thai","Helvetica Neue",sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(120% 75% at 50% -8%, color-mix(in srgb, var(--brand) 13%, transparent), transparent 58%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:28px 20px 56px}
+
+  .top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:30px}
+  .brand{display:flex; align-items:baseline; gap:9px}
+  .gv{font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:30px; letter-spacing:.5px;
+    background:linear-gradient(120deg,var(--cyan),var(--brand-deep)); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1}
+  .brand small{font-family:"Bai Jamjuree",sans-serif; font-weight:600; color:var(--muted); font-size:13px; letter-spacing:2px; text-transform:uppercase}
+  .pill{display:inline-flex; align-items:center; gap:7px; padding:7px 12px 7px 8px; border-radius:999px;
+    background:linear-gradient(135deg,var(--danger),var(--danger-deep)); color:#fff; font-weight:600; font-size:12.5px; box-shadow:var(--shadow-sm)}
+  .pill .bolt{width:15px; height:15px; color:var(--gold)}
+
+  .hero{text-align:center; margin-bottom:30px}
+  h1{font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:32px; line-height:1.18;
+    letter-spacing:-.2px; margin:0 0 12px; text-wrap:balance}
+  h1 .accent{background:linear-gradient(120deg,var(--cyan),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .lede{color:var(--muted); font-size:15.5px; margin:0 auto; max-width:52ch}
+
+  /* ── platform cards ── */
+  .platforms{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media (max-width:600px){ .platforms{grid-template-columns:1fr} }
+  .pcard{background:var(--surface); border:1px solid var(--line); border-radius:22px; padding:24px 22px;
+    box-shadow:var(--shadow); display:flex; flex-direction:column; align-items:center; text-align:center}
+  .plogo{width:52px; height:52px; display:flex; align-items:center; justify-content:center; border-radius:15px;
+    margin-bottom:12px}
+  .plogo.ios{background:#000} .plogo.ios svg{width:28px; height:28px; color:#fff; margin-top:-2px}
+  .plogo.and{background:#E8F7EE} .plogo.and svg{width:30px; height:30px; color:#2BB673}
+  :root[data-theme="dark"] .plogo.and, :root:not([data-theme="light"]) .plogo.and{background:#123026}
+  .pname{font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:19px; margin:0}
+  .pmeta{color:var(--muted); font-size:12.5px; margin:3px 0 16px; font-variant-numeric:tabular-nums}
+
+  .qr-tile{width:172px; height:172px; background:#fff; border-radius:14px; padding:12px;
+    box-shadow:0 6px 20px -10px rgba(12,30,51,.35); display:flex; align-items:center; justify-content:center; margin-bottom:8px}
+  .qr-tile svg{width:100%; height:100%; display:block}
+  .qr-hint{font-size:11.5px; color:var(--muted); margin:0 0 16px}
+
+  .btn{display:flex; align-items:center; justify-content:center; gap:10px; width:100%;
+    padding:14px 18px; border-radius:14px; text-decoration:none; border:0; cursor:pointer;
+    font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:15.5px; transition:transform .15s ease, box-shadow .15s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .btn svg{width:19px; height:19px}
+  .btn.ios{background:#000; color:#fff; box-shadow:0 12px 26px -14px rgba(0,0,0,.7)}
+  .btn.and{background:linear-gradient(135deg,var(--brand),var(--brand-deep)); color:#fff;
+    box-shadow:0 12px 26px -14px color-mix(in srgb,var(--brand-deep) 80%,transparent)}
+  :root[data-theme="dark"] .btn.ios, :root:not([data-theme="light"]) .btn.ios{background:#fff; color:#000}
+
+  /* ── android note ── */
+  .note{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-radius:16px; padding:16px 18px}
+  .note h3{font-family:"Bai Jamjuree",sans-serif; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin:0 0 10px; font-weight:600; display:flex; align-items:center; gap:8px}
+  .note h3 svg{width:16px; height:16px; color:var(--brand)}
+  .note p{margin:0; font-size:14px; color:var(--ink)}
+  .note kbd{font-family:inherit; font-weight:600; background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1px 7px; white-space:nowrap}
+
+  .trust{margin-top:18px; background:var(--surface-2); border:1px solid var(--line); border-radius:16px; padding:16px 18px; display:flex; flex-direction:column; gap:11px}
+  .trust .t{display:flex; gap:11px; align-items:flex-start; font-size:14px}
+  .trust svg{flex:none; width:19px; height:19px; color:var(--ok); margin-top:1px}
+  .trust .t b{font-weight:600} .trust .t span{color:var(--muted)}
+
+  footer{margin-top:34px; text-align:center; color:var(--muted); font-size:12.5px; line-height:1.8}
+  footer .gvf{font-family:"Bai Jamjuree",sans-serif; font-weight:700; letter-spacing:.5px;
+    background:linear-gradient(120deg,var(--cyan),var(--brand-deep)); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+  .fade{opacity:0; transform:translateY(10px); animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
+  .fade:nth-child(1){animation-delay:.02s} .fade:nth-child(2){animation-delay:.08s}
+  .fade:nth-child(3){animation-delay:.14s} .fade:nth-child(4){animation-delay:.2s} .fade:nth-child(5){animation-delay:.26s}
+  @keyframes rise{to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion: reduce){ .fade{animation:none; opacity:1; transform:none} .btn{transition:none} }
+  @media (max-width:420px){ h1{font-size:27px} .wrap{padding:22px 16px 48px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top fade">
+    <div class="brand"><span class="gv">GV</span><small>Gravity</small></div>
+    <span class="pill">
+      <svg class="bolt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2 4 13.2h5.6L8.3 22 20 9.9h-6.1z"/></svg>
+      โหมดภัยพิบัติ
+    </span>
+  </div>
+
+  <div class="hero fade">
+    <h1>ช่วยกันให้ผ่าน<span class="accent"> น้ำท่วมน่าน</span> ไปด้วยกัน</h1>
+    <p class="lede">Gravity รวมการขอความช่วยเหลือ อาสาสมัคร จุดพักพิง และเส้นทางอันตราย ไว้ในแผนที่เดียว — ใช้ได้ทันที ไม่ต้องล็อกอิน</p>
+  </div>
+
+  <div class="platforms fade">
+    <!-- iOS -->
+    <div class="pcard">
+      <div class="plogo ios">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.9c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.3 1.2-2.4-.1 0-2.3-.9-2.3-3.5zM14.3 6.3c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/></svg>
+      </div>
+      <p class="pname">iPhone / iPad</p>
+      <p class="pmeta">App Store · iOS 13.0+ · ฟรี</p>
+      <div class="qr-tile" id="qrIos"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 370" class="segno"><path transform="scale(10)" class="qrline" stroke="#0c1e33" d="M2 2.5h7m5 0h1m5 0h4m1 0h1m2 0h7m-33 1h1m5 0h1m4 0h1m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h2m3 0h5m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m3 0h1m2 0h2m3 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h5m2 0h5m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m2 0h3m4 0h1m1 0h1m4 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m1 0h2m2 0h1m1 0h1m2 0h4m1 0h1m-25 1h1m1 0h5m2 0h1m2 0h3m1 0h4m2 0h1m1 0h1m1 0h5m-31 1h5m2 0h3m3 0h1m2 0h9m1 0h2m1 0h4m-33 1h3m1 0h3m5 0h4m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m-30 1h1m1 0h2m1 0h2m3 0h2m1 0h1m1 0h3m1 0h1m1 0h3m2 0h4m-30 1h2m2 0h3m5 0h3m8 0h1m1 0h3m-30 1h3m2 0h1m2 0h1m1 0h3m2 0h1m1 0h2m2 0h4m1 0h1m2 0h4m-30 1h2m1 0h3m3 0h2m1 0h3m3 0h1m2 0h3m1 0h1m2 0h1m-31 1h3m3 0h3m1 0h1m3 0h1m5 0h1m1 0h1m1 0h2m1 0h3m-30 1h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h3m4 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h1m1 0h3m2 0h1m1 0h1m2 0h5m2 0h2m1 0h2m1 0h1m-33 1h1m1 0h1m3 0h1m4 0h3m1 0h2m1 0h1m5 0h2m1 0h2m1 0h2m-32 1h1m2 0h1m3 0h1m1 0h3m1 0h3m3 0h4m1 0h1m2 0h4m1 0h1m-32 1h4m1 0h1m2 0h2m2 0h1m1 0h1m2 0h2m7 0h3m-30 1h1m1 0h2m1 0h1m2 0h1m3 0h5m4 0h7m4 0h1m-33 1h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m6 0h2m7 0h3m-32 1h1m1 0h1m2 0h1m2 0h1m1 0h4m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m1 0h1m-33 1h1m2 0h2m1 0h1m4 0h2m1 0h1m2 0h1m4 0h1m1 0h6m-22 1h1m2 0h2m3 0h4m1 0h1m1 0h2m3 0h1m1 0h3m-33 1h7m2 0h3m2 0h4m2 0h5m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h1m2 0h1m1 0h2m1 0h3m1 0h5m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m3 0h1m3 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h3m2 0h1m1 0h2m2 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h4m1 0h1m1 0h3m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h7m2 0h2m1 0h1m1 0h1m1 0h1m2 0h3m-31 1h7m1 0h1m1 0h4m1 0h1m1 0h2m3 0h1m1 0h1m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <p class="qr-hint">สแกนด้วยกล้อง iPhone</p>
+      <a class="btn ios" href="https://apps.apple.com/th/app/gravity/id6761763533">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.9c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.3 1.2-2.4-.1 0-2.3-.9-2.3-3.5zM14.3 6.3c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/></svg>
+        เปิด App Store
+      </a>
+    </div>
+
+    <!-- Android -->
+    <div class="pcard">
+      <div class="plogo and">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a4 4 0 0 1 4 4H8a4 4 0 0 1 4-4zm5 5a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM6.5 9.5a1 1 0 0 1 1 1V15a1 1 0 1 1-2 0v-4.5a1 1 0 0 1 1-1zm11 0a1 1 0 0 1 1 1V15a1 1 0 1 1-2 0v-4.5a1 1 0 0 1 1-1zM9 18h1.5v2.5a1 1 0 1 1-2 0V18zm4.5 0H15v2.5a1 1 0 1 1-2 0V18z"/></svg>
+      </div>
+      <p class="pname">Android</p>
+      <p class="pmeta">APK · Android 7.0+ · ~111 MB</p>
+      <div class="qr-tile" id="qrAnd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" class="segno"><path transform="scale(10)" class="qrline" stroke="#0c1e33" d="M2 2.5h7m1 0h1m2 0h2m2 0h2m1 0h1m1 0h1m2 0h1m3 0h2m1 0h1m3 0h7m-41 1h1m5 0h1m3 0h1m4 0h1m2 0h3m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m2 0h2m1 0h1m3 0h3m1 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h3m3 0h4m2 0h1m2 0h5m2 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h2m3 0h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h1m6 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h2m1 0h2m2 0h1m1 0h1m1 0h4m2 0h2m2 0h1m1 0h2m1 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h1m1 0h1m1 0h6m2 0h2m2 0h1m1 0h1m2 0h1m1 0h2m-33 1h1m3 0h1m1 0h4m3 0h1m1 0h1m1 0h1m1 0h4m1 0h1m4 0h1m2 0h6m2 0h1m-41 1h4m1 0h1m2 0h1m6 0h4m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m3 0h4m1 0h2m-41 1h2m1 0h6m1 0h4m1 0h3m2 0h1m1 0h2m3 0h2m3 0h2m1 0h2m3 0h1m-40 1h1m1 0h1m1 0h1m4 0h3m1 0h1m1 0h3m1 0h5m3 0h5m1 0h1m1 0h2m-38 1h1m1 0h6m2 0h4m3 0h6m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m3 0h1m-40 1h2m3 0h1m1 0h2m1 0h1m1 0h1m3 0h4m3 0h1m1 0h4m1 0h1m2 0h4m1 0h3m-41 1h3m1 0h3m3 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h2m5 0h2m2 0h4m-41 1h2m5 0h2m3 0h1m1 0h1m1 0h6m1 0h2m2 0h3m1 0h2m2 0h1m1 0h1m2 0h1m-40 1h2m3 0h1m1 0h1m1 0h1m3 0h1m2 0h1m3 0h1m2 0h1m3 0h2m2 0h1m2 0h1m1 0h1m-38 1h1m3 0h2m1 0h2m3 0h1m4 0h2m2 0h1m1 0h1m1 0h4m1 0h1m2 0h6m1 0h1m-41 1h4m2 0h2m1 0h3m1 0h2m3 0h1m2 0h4m1 0h2m1 0h1m3 0h3m4 0h1m-40 1h1m1 0h2m2 0h1m1 0h1m2 0h5m4 0h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m-34 1h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h3m5 0h2m-41 1h1m3 0h1m3 0h1m2 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h4m1 0h1m1 0h5m1 0h1m-41 1h2m2 0h1m1 0h1m1 0h2m1 0h1m1 0h3m2 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m-39 1h1m5 0h4m2 0h1m1 0h3m2 0h2m1 0h1m1 0h1m2 0h3m1 0h1m3 0h1m2 0h1m-39 1h3m1 0h2m4 0h4m1 0h1m2 0h4m3 0h1m1 0h1m1 0h3m3 0h1m1 0h1m-40 1h2m1 0h1m1 0h1m2 0h3m1 0h2m2 0h3m4 0h1m2 0h4m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h3m1 0h4m3 0h2m1 0h1m2 0h2m1 0h8m2 0h1m1 0h1m1 0h1m5 0h1m-41 1h1m4 0h1m2 0h2m4 0h2m1 0h5m4 0h2m1 0h9m-38 1h4m2 0h1m1 0h2m1 0h1m1 0h2m2 0h6m1 0h1m4 0h1m2 0h2m5 0h2m-41 1h1m3 0h1m2 0h1m1 0h1m1 0h7m1 0h5m2 0h3m1 0h1m1 0h5m3 0h1m-38 1h6m1 0h1m7 0h1m4 0h5m1 0h1m2 0h2m6 0h1m-39 1h1m5 0h2m2 0h1m1 0h2m1 0h2m2 0h4m1 0h1m2 0h2m2 0h1m3 0h1m-38 1h4m2 0h1m1 0h3m6 0h3m1 0h4m2 0h1m1 0h1m2 0h6m-30 1h5m3 0h1m1 0h1m4 0h1m3 0h3m2 0h1m3 0h3m1 0h1m-41 1h7m1 0h1m2 0h1m2 0h1m1 0h2m2 0h4m2 0h2m3 0h2m1 0h1m1 0h2m2 0h1m-41 1h1m5 0h1m6 0h6m2 0h1m4 0h1m1 0h5m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m3 0h1m3 0h3m3 0h1m4 0h8m2 0h2m-41 1h1m1 0h3m1 0h1m3 0h2m2 0h2m1 0h1m5 0h5m4 0h1m2 0h1m1 0h2m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m2 0h1m1 0h2m2 0h3m2 0h2m4 0h2m3 0h1m2 0h1m-41 1h1m5 0h1m2 0h1m1 0h2m2 0h3m1 0h3m4 0h2m1 0h1m1 0h3m1 0h1m1 0h1m1 0h2m-41 1h7m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m4 0h1m1 0h1m2 0h2m1 0h2m2 0h1"/></svg></div>
+      <p class="qr-hint">สแกนด้วยกล้อง Android</p>
+      <a class="btn and" href="https://firebasestorage.googleapis.com/v0/b/gravity-3a019.firebasestorage.app/o/gravity.apk?alt=media">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        ดาวน์โหลด APK
+      </a>
+    </div>
+  </div>
+
+  <div class="note fade">
+    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg> ติดตั้ง APK บน Android</h3>
+    <p>เมื่อโหลดเสร็จ ถ้าเครื่องเตือน ให้กด <kbd>ตั้งค่า</kbd> แล้วเปิด <kbd>อนุญาตจากแหล่งนี้</kbd> → กดติดตั้ง (เป็นขั้นตอนปกติของแอปที่ติดตั้งนอก Play Store)</p>
+  </div>
+
+  <div class="trust fade">
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.5-7 9-4-1.5-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div><b>แอปทางการของ Gravity</b> <span>— ไม่ใช่ของปลอมหรือแอปลอกเลียนแบบ</span></div></div>
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      <div><b>เบอร์โทรของผู้ขอความช่วยเหลือ</b> <span>เห็นเฉพาะเจ้าหน้าที่อาสาที่ยืนยันตัวตนแล้ว</span></div></div>
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+      <div><b>เข้าใช้แบบไม่ต้องล็อกอินได้</b> <span>— กดขอความช่วยเหลือได้ทันทีในไม่กี่แตะ</span></div></div>
+  </div>
+
+  <footer>
+    <span class="gvf">Gravity</span> · แอปรวมพลังชุมชนยามภัยพิบัติ<br>
+    โดย Siriphorn Thamthikul · iOS &amp; Android
+  </footer>
+</div>
+</body>
+</html>
