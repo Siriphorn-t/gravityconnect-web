@@ -7,114 +7,143 @@
 <title>Gravity โหมดภัยพิบัติ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600;700&family=Anuphan:wght@400;500;600;700&display=swap">
 <style>
   :root{
-    --bg:#EAF1F8; --surface:#FFFFFF; --surface-2:#F4F8FC;
-    --ink:#0C1E33; --muted:#5A7286; --line:#D7E3EE;
-    --brand:#1E88E5; --brand-deep:#1565C0; --cyan:#17B6D6;
-    --danger:#E53935; --danger-deep:#C62828; --gold:#FFC107;
-    --ok:#2E7D32; --ink-btn:#0C1E33;
-    --shadow:0 18px 50px -24px rgba(12,30,51,.45);
-    --shadow-sm:0 4px 18px -10px rgba(12,30,51,.35);
+    --bg:#EEF3FA; --surface:#FFFFFF; --surface-2:#F5F8FC;
+    --ink:#0B1C30; --muted:#5F7590; --line:#E1E9F2;
+    --brand:#1E88E5; --brand-deep:#1565C0; --cyan:#12B5D6;
+    --danger:#F0453E; --danger-deep:#C62828; --gold:#FFC531;
+    --ok:#22A06B;
+    --shadow:0 24px 60px -30px rgba(11,28,48,.42);
+    --shadow-sm:0 6px 20px -12px rgba(11,28,48,.35);
+    --ring:color-mix(in srgb, var(--brand) 16%, transparent);
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#0A1A2C; --surface:#122A42; --surface-2:#0F2338;
-      --ink:#E9F2FB; --muted:#93A9BF; --line:#22415E;
-      --brand:#39A7F2; --brand-deep:#2E7DF0; --cyan:#2AC6E6;
-      --danger:#FF6B60; --danger-deep:#E53935; --gold:#FFD24A;
-      --ok:#5FC466; --ink-btn:#0C1E33;
-      --shadow:0 22px 60px -28px rgba(0,0,0,.7);
-      --shadow-sm:0 6px 22px -12px rgba(0,0,0,.6);
+      --bg:#081726; --surface:#102439; --surface-2:#0C1E30;
+      --ink:#E8F1FB; --muted:#93A9C0; --line:#213c56;
+      --brand:#3AA9F5; --brand-deep:#2E7DF0; --cyan:#28C7E6;
+      --danger:#FF6A61; --danger-deep:#E53935; --gold:#FFD24A;
+      --ok:#48C98C;
+      --shadow:0 28px 70px -34px rgba(0,0,0,.75);
+      --shadow-sm:0 8px 24px -14px rgba(0,0,0,.6);
+      --ring:color-mix(in srgb, var(--brand) 26%, transparent);
     }
   }
   :root[data-theme="dark"]{
-    --bg:#0A1A2C; --surface:#122A42; --surface-2:#0F2338;
-    --ink:#E9F2FB; --muted:#93A9BF; --line:#22415E;
-    --brand:#39A7F2; --brand-deep:#2E7DF0; --cyan:#2AC6E6;
-    --danger:#FF6B60; --danger-deep:#E53935; --gold:#FFD24A;
-    --ok:#5FC466; --ink-btn:#0C1E33;
-    --shadow:0 22px 60px -28px rgba(0,0,0,.7);
-    --shadow-sm:0 6px 22px -12px rgba(0,0,0,.6);
+    --bg:#081726; --surface:#102439; --surface-2:#0C1E30;
+    --ink:#E8F1FB; --muted:#93A9C0; --line:#213c56;
+    --brand:#3AA9F5; --brand-deep:#2E7DF0; --cyan:#28C7E6;
+    --danger:#FF6A61; --danger-deep:#E53935; --gold:#FFD24A;
+    --ok:#48C98C;
+    --shadow:0 28px 70px -34px rgba(0,0,0,.75);
+    --shadow-sm:0 8px 24px -14px rgba(0,0,0,.6);
+    --ring:color-mix(in srgb, var(--brand) 26%, transparent);
   }
 
   *{box-sizing:border-box}
   body{
     margin:0; background:var(--bg); color:var(--ink);
-    font-family:"Noto Sans Thai","Helvetica Neue",sans-serif;
-    line-height:1.6; -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(120% 75% at 50% -8%, color-mix(in srgb, var(--brand) 13%, transparent), transparent 58%);
+    font-family:"Anuphan","Segoe UI",system-ui,sans-serif;
+    line-height:1.62; -webkit-font-smoothing:antialiased; letter-spacing:.1px;
+    background-image:
+      radial-gradient(90% 55% at 15% -5%, color-mix(in srgb,var(--cyan) 16%, transparent), transparent 60%),
+      radial-gradient(90% 60% at 100% 0%, color-mix(in srgb,var(--brand) 14%, transparent), transparent 55%);
     background-attachment:fixed;
   }
-  .wrap{max-width:760px; margin:0 auto; padding:28px 20px 56px}
+  .wrap{max-width:780px; margin:0 auto; padding:30px 20px 60px}
 
-  .top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:30px}
+  .top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:38px}
   .brand{display:flex; align-items:baseline; gap:9px}
-  .gv{font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:30px; letter-spacing:.5px;
-    background:linear-gradient(120deg,var(--cyan),var(--brand-deep)); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1}
-  .brand small{font-family:"Bai Jamjuree",sans-serif; font-weight:600; color:var(--muted); font-size:13px; letter-spacing:2px; text-transform:uppercase}
-  .pill{display:inline-flex; align-items:center; gap:7px; padding:7px 12px 7px 8px; border-radius:999px;
-    background:linear-gradient(135deg,var(--danger),var(--danger-deep)); color:#fff; font-weight:600; font-size:12.5px; box-shadow:var(--shadow-sm)}
+  .gv{font-family:"Kanit",sans-serif; font-weight:700; font-size:29px; letter-spacing:.5px;
+    background:linear-gradient(115deg,var(--cyan),var(--brand-deep)); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1}
+  .brand small{font-family:"Kanit",sans-serif; font-weight:600; color:var(--muted); font-size:12px; letter-spacing:3px; text-transform:uppercase}
+  .pill{display:inline-flex; align-items:center; gap:7px; padding:8px 14px 8px 9px; border-radius:999px;
+    background:linear-gradient(135deg,var(--danger),var(--danger-deep)); color:#fff; font-weight:600; font-size:12.5px;
+    box-shadow:0 8px 22px -10px color-mix(in srgb,var(--danger) 70%,transparent)}
   .pill .bolt{width:15px; height:15px; color:var(--gold)}
 
-  .hero{text-align:center; margin-bottom:30px}
-  h1{font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:32px; line-height:1.18;
-    letter-spacing:-.2px; margin:0 0 12px; text-wrap:balance}
-  h1 .accent{background:linear-gradient(120deg,var(--cyan),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .lede{color:var(--muted); font-size:15.5px; margin:0 auto; max-width:52ch}
+  .hero{text-align:center; margin-bottom:34px}
+  h1{font-family:"Kanit",sans-serif; font-weight:600; font-size:38px; line-height:1.14;
+    letter-spacing:0; margin:0 0 14px; text-wrap:balance}
+  h1 .accent{background:linear-gradient(115deg,var(--cyan),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .lede{color:var(--muted); font-size:16px; margin:0 auto; max-width:50ch}
 
-  /* ── platform cards ── */
   .platforms{display:grid; grid-template-columns:1fr 1fr; gap:18px}
   @media (max-width:600px){ .platforms{grid-template-columns:1fr} }
-  .pcard{background:var(--surface); border:1px solid var(--line); border-radius:22px; padding:24px 22px;
-    box-shadow:var(--shadow); display:flex; flex-direction:column; align-items:center; text-align:center}
-  .plogo{width:52px; height:52px; display:flex; align-items:center; justify-content:center; border-radius:15px;
-    margin-bottom:12px}
-  .plogo.ios{background:#000} .plogo.ios svg{width:28px; height:28px; color:#fff; margin-top:-2px}
-  .plogo.and{background:#E8F7EE} .plogo.and svg{width:30px; height:30px; color:#2BB673}
+  .pcard{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:26px; padding:26px 22px 22px;
+    box-shadow:var(--shadow); display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden}
+  .pcard::before{content:""; position:absolute; inset:0 0 auto 0; height:4px;
+    background:linear-gradient(90deg,var(--cyan),var(--brand-deep))}
+  .pcard.and::before{background:linear-gradient(90deg,#3DDC84,#22A06B)}
+  .plogo{width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:17px; margin-bottom:13px}
+  .plogo.ios{background:#0B0B0F} .plogo.ios svg{width:29px; height:29px; color:#fff; margin-top:-2px}
+  .plogo.and{background:#E7F8EF} .plogo.and svg{width:31px; height:31px; color:#20A566}
   :root[data-theme="dark"] .plogo.and, :root:not([data-theme="light"]) .plogo.and{background:#123026}
-  .pname{font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:19px; margin:0}
-  .pmeta{color:var(--muted); font-size:12.5px; margin:3px 0 16px; font-variant-numeric:tabular-nums}
+  .pname{font-family:"Kanit",sans-serif; font-weight:600; font-size:20px; margin:0}
+  .pmeta{color:var(--muted); font-size:12.5px; margin:4px 0 17px; font-variant-numeric:tabular-nums}
 
-  .qr-tile{width:172px; height:172px; background:#fff; border-radius:14px; padding:12px;
-    box-shadow:0 6px 20px -10px rgba(12,30,51,.35); display:flex; align-items:center; justify-content:center; margin-bottom:8px}
+  .qr-tile{width:176px; height:176px; background:#fff; border-radius:18px; padding:13px;
+    box-shadow:0 8px 22px -12px rgba(11,28,48,.4); display:flex; align-items:center; justify-content:center; margin-bottom:9px}
   .qr-tile svg{width:100%; height:100%; display:block}
-  .qr-hint{font-size:11.5px; color:var(--muted); margin:0 0 16px}
+  .qr-hint{font-size:11.5px; color:var(--muted); margin:0 0 17px}
 
   .btn{display:flex; align-items:center; justify-content:center; gap:10px; width:100%;
-    padding:14px 18px; border-radius:14px; text-decoration:none; border:0; cursor:pointer;
-    font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:15.5px; transition:transform .15s ease, box-shadow .15s ease}
+    padding:15px 18px; border-radius:16px; text-decoration:none; border:0; cursor:pointer;
+    font-family:"Kanit",sans-serif; font-weight:600; font-size:16px; transition:transform .16s ease, box-shadow .16s ease}
   .btn:hover{transform:translateY(-2px)}
   .btn:active{transform:translateY(0)}
-  .btn svg{width:19px; height:19px}
-  .btn.ios{background:#000; color:#fff; box-shadow:0 12px 26px -14px rgba(0,0,0,.7)}
-  .btn.and{background:linear-gradient(135deg,var(--brand),var(--brand-deep)); color:#fff;
-    box-shadow:0 12px 26px -14px color-mix(in srgb,var(--brand-deep) 80%,transparent)}
-  :root[data-theme="dark"] .btn.ios, :root:not([data-theme="light"]) .btn.ios{background:#fff; color:#000}
+  .btn:focus-visible{outline:3px solid var(--ring); outline-offset:2px}
+  .btn svg{width:20px; height:20px}
+  .btn.ios{background:#0B0B0F; color:#fff; box-shadow:0 14px 30px -16px rgba(0,0,0,.75)}
+  .btn.and{background:linear-gradient(135deg,#2BB673,#1F9E63); color:#fff; box-shadow:0 14px 30px -16px rgba(31,158,99,.7)}
+  :root[data-theme="dark"] .btn.ios, :root:not([data-theme="light"]) .btn.ios{background:#fff; color:#0B0B0F}
+  .btn small{display:block; font-weight:500; font-size:11px; opacity:.85; margin-top:1px; font-family:"Anuphan",sans-serif}
 
-  /* ── android note ── */
-  .note{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-radius:16px; padding:16px 18px}
-  .note h3{font-family:"Bai Jamjuree",sans-serif; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin:0 0 10px; font-weight:600; display:flex; align-items:center; gap:8px}
-  .note h3 svg{width:16px; height:16px; color:var(--brand)}
-  .note p{margin:0; font-size:14px; color:var(--ink)}
-  .note kbd{font-family:inherit; font-weight:600; background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1px 7px; white-space:nowrap}
+  .note{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-radius:18px; padding:16px 18px}
+  .note h3{font-family:"Kanit",sans-serif; font-size:13px; letter-spacing:.5px; color:var(--ink); margin:0 0 8px; font-weight:600; display:flex; align-items:center; gap:8px}
+  .note h3 svg{width:17px; height:17px; color:var(--brand)}
+  .note p{margin:0; font-size:14px; color:var(--muted)}
+  .note kbd{font-family:"Anuphan",sans-serif; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:7px; padding:1px 8px; white-space:nowrap}
 
-  .trust{margin-top:18px; background:var(--surface-2); border:1px solid var(--line); border-radius:16px; padding:16px 18px; display:flex; flex-direction:column; gap:11px}
+  /* ── features ── */
+  .sect-title{font-family:"Kanit",sans-serif; font-weight:600; font-size:20px; margin:0 0 16px; text-align:center}
+  .features{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  @media (max-width:560px){ .features{grid-template-columns:1fr} }
+  .feat{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:15px 16px; display:flex; gap:12px; align-items:flex-start; box-shadow:var(--shadow-sm)}
+  .feat .fi{flex:none; width:38px; height:38px; border-radius:11px; display:flex; align-items:center; justify-content:center; background:color-mix(in srgb,var(--brand) 13%, transparent)}
+  .feat .fi svg{width:20px; height:20px; color:var(--brand)}
+  .feat h4{font-family:"Kanit",sans-serif; font-weight:600; font-size:15px; margin:0 0 3px}
+  .feat p{margin:0; font-size:12.8px; color:var(--muted); line-height:1.5}
+
+  /* ── mission ── */
+  .mission{margin-top:22px; position:relative; border-radius:22px; padding:26px 24px;
+    background:linear-gradient(140deg, color-mix(in srgb,var(--brand) 12%, var(--surface)), var(--surface));
+    border:1px solid var(--line); box-shadow:var(--shadow-sm)}
+  .mission .heart{width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    background:color-mix(in srgb,var(--danger) 16%, transparent); margin-bottom:13px}
+  .mission .heart svg{width:22px; height:22px; color:var(--danger)}
+  .mission h2{font-family:"Kanit",sans-serif; font-weight:600; font-size:21px; margin:0 0 10px}
+  .mission p{margin:0; font-size:15px; color:var(--ink); line-height:1.72}
+  .mission .sign{margin-top:14px; font-family:"Kanit",sans-serif; font-weight:600; font-size:14px; color:var(--muted)}
+
+  .trust{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-radius:18px; padding:16px 18px; display:flex; flex-direction:column; gap:12px}
   .trust .t{display:flex; gap:11px; align-items:flex-start; font-size:14px}
   .trust svg{flex:none; width:19px; height:19px; color:var(--ok); margin-top:1px}
   .trust .t b{font-weight:600} .trust .t span{color:var(--muted)}
 
-  footer{margin-top:34px; text-align:center; color:var(--muted); font-size:12.5px; line-height:1.8}
-  footer .gvf{font-family:"Bai Jamjuree",sans-serif; font-weight:700; letter-spacing:.5px;
-    background:linear-gradient(120deg,var(--cyan),var(--brand-deep)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  footer{margin-top:36px; text-align:center; color:var(--muted); font-size:12.5px; line-height:1.9}
+  footer .gvf{font-family:"Kanit",sans-serif; font-weight:700; letter-spacing:.5px;
+    background:linear-gradient(115deg,var(--cyan),var(--brand-deep)); -webkit-background-clip:text; background-clip:text; color:transparent}
 
-  .fade{opacity:0; transform:translateY(10px); animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
-  .fade:nth-child(1){animation-delay:.02s} .fade:nth-child(2){animation-delay:.08s}
-  .fade:nth-child(3){animation-delay:.14s} .fade:nth-child(4){animation-delay:.2s} .fade:nth-child(5){animation-delay:.26s}
+  .fade{opacity:0; transform:translateY(12px); animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
+  .fade:nth-child(1){animation-delay:.02s} .fade:nth-child(2){animation-delay:.09s}
+  .fade:nth-child(3){animation-delay:.16s} .fade:nth-child(4){animation-delay:.23s}
+  .fade:nth-child(5){animation-delay:.3s} .fade:nth-child(6){animation-delay:.37s}
   @keyframes rise{to{opacity:1; transform:none}}
   @media (prefers-reduced-motion: reduce){ .fade{animation:none; opacity:1; transform:none} .btn{transition:none} }
-  @media (max-width:420px){ h1{font-size:27px} .wrap{padding:22px 16px 48px} }
+  @media (max-width:420px){ h1{font-size:31px} .wrap{padding:24px 16px 50px} }
 </style>
 </head>
 <body>
@@ -129,44 +158,81 @@
 
   <div class="hero fade">
     <h1>ช่วยกันให้ผ่าน<span class="accent"> น้ำท่วมน่าน</span> ไปด้วยกัน</h1>
-    <p class="lede">Gravity รวมการขอความช่วยเหลือ อาสาสมัคร จุดพักพิง และเส้นทางอันตราย ไว้ในแผนที่เดียว — ใช้ได้ทันที ไม่ต้องล็อกอิน</p>
+    <p class="lede">รวมการขอความช่วยเหลือ อาสาสมัคร จุดพักพิง และเส้นทางอันตราย ไว้ในแผนที่เดียว — ใช้ได้ทันที ไม่ต้องล็อกอิน</p>
   </div>
 
   <div class="platforms fade">
-    <!-- iOS -->
-    <div class="pcard">
+    <div class="pcard ios">
       <div class="plogo ios">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.9c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.3 1.2-2.4-.1 0-2.3-.9-2.3-3.5zM14.3 6.3c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/></svg>
       </div>
       <p class="pname">iPhone / iPad</p>
       <p class="pmeta">App Store · iOS 13.0+ · ฟรี</p>
-      <div class="qr-tile" id="qrIos"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 370" class="segno"><path transform="scale(10)" class="qrline" stroke="#0c1e33" d="M2 2.5h7m5 0h1m5 0h4m1 0h1m2 0h7m-33 1h1m5 0h1m4 0h1m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h2m3 0h5m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m3 0h1m2 0h2m3 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h5m2 0h5m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m2 0h3m4 0h1m1 0h1m4 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m1 0h2m2 0h1m1 0h1m2 0h4m1 0h1m-25 1h1m1 0h5m2 0h1m2 0h3m1 0h4m2 0h1m1 0h1m1 0h5m-31 1h5m2 0h3m3 0h1m2 0h9m1 0h2m1 0h4m-33 1h3m1 0h3m5 0h4m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m-30 1h1m1 0h2m1 0h2m3 0h2m1 0h1m1 0h3m1 0h1m1 0h3m2 0h4m-30 1h2m2 0h3m5 0h3m8 0h1m1 0h3m-30 1h3m2 0h1m2 0h1m1 0h3m2 0h1m1 0h2m2 0h4m1 0h1m2 0h4m-30 1h2m1 0h3m3 0h2m1 0h3m3 0h1m2 0h3m1 0h1m2 0h1m-31 1h3m3 0h3m1 0h1m3 0h1m5 0h1m1 0h1m1 0h2m1 0h3m-30 1h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h3m4 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h1m1 0h3m2 0h1m1 0h1m2 0h5m2 0h2m1 0h2m1 0h1m-33 1h1m1 0h1m3 0h1m4 0h3m1 0h2m1 0h1m5 0h2m1 0h2m1 0h2m-32 1h1m2 0h1m3 0h1m1 0h3m1 0h3m3 0h4m1 0h1m2 0h4m1 0h1m-32 1h4m1 0h1m2 0h2m2 0h1m1 0h1m2 0h2m7 0h3m-30 1h1m1 0h2m1 0h1m2 0h1m3 0h5m4 0h7m4 0h1m-33 1h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m6 0h2m7 0h3m-32 1h1m1 0h1m2 0h1m2 0h1m1 0h4m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m1 0h1m-33 1h1m2 0h2m1 0h1m4 0h2m1 0h1m2 0h1m4 0h1m1 0h6m-22 1h1m2 0h2m3 0h4m1 0h1m1 0h2m3 0h1m1 0h3m-33 1h7m2 0h3m2 0h4m2 0h5m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h1m2 0h1m1 0h2m1 0h3m1 0h5m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m3 0h1m3 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h3m2 0h1m1 0h2m2 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h4m1 0h1m1 0h3m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h7m2 0h2m1 0h1m1 0h1m1 0h1m2 0h3m-31 1h7m1 0h1m1 0h4m1 0h1m1 0h2m3 0h1m1 0h1m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="qr-tile" id="qrIos"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 370" class="segno"><path transform="scale(10)" class="qrline" stroke="#0b1c30" d="M2 2.5h7m5 0h1m5 0h4m1 0h1m2 0h7m-33 1h1m5 0h1m4 0h1m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h2m3 0h5m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m3 0h1m2 0h2m3 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h5m2 0h5m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m2 0h3m4 0h1m1 0h1m4 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m1 0h2m2 0h1m1 0h1m2 0h4m1 0h1m-25 1h1m1 0h5m2 0h1m2 0h3m1 0h4m2 0h1m1 0h1m1 0h5m-31 1h5m2 0h3m3 0h1m2 0h9m1 0h2m1 0h4m-33 1h3m1 0h3m5 0h4m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m-30 1h1m1 0h2m1 0h2m3 0h2m1 0h1m1 0h3m1 0h1m1 0h3m2 0h4m-30 1h2m2 0h3m5 0h3m8 0h1m1 0h3m-30 1h3m2 0h1m2 0h1m1 0h3m2 0h1m1 0h2m2 0h4m1 0h1m2 0h4m-30 1h2m1 0h3m3 0h2m1 0h3m3 0h1m2 0h3m1 0h1m2 0h1m-31 1h3m3 0h3m1 0h1m3 0h1m5 0h1m1 0h1m1 0h2m1 0h3m-30 1h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h3m4 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h1m1 0h3m2 0h1m1 0h1m2 0h5m2 0h2m1 0h2m1 0h1m-33 1h1m1 0h1m3 0h1m4 0h3m1 0h2m1 0h1m5 0h2m1 0h2m1 0h2m-32 1h1m2 0h1m3 0h1m1 0h3m1 0h3m3 0h4m1 0h1m2 0h4m1 0h1m-32 1h4m1 0h1m2 0h2m2 0h1m1 0h1m2 0h2m7 0h3m-30 1h1m1 0h2m1 0h1m2 0h1m3 0h5m4 0h7m4 0h1m-33 1h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m6 0h2m7 0h3m-32 1h1m1 0h1m2 0h1m2 0h1m1 0h4m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m1 0h1m-33 1h1m2 0h2m1 0h1m4 0h2m1 0h1m2 0h1m4 0h1m1 0h6m-22 1h1m2 0h2m3 0h4m1 0h1m1 0h2m3 0h1m1 0h3m-33 1h7m2 0h3m2 0h4m2 0h5m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h1m2 0h1m1 0h2m1 0h3m1 0h5m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m3 0h1m3 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h3m2 0h1m1 0h2m2 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h4m1 0h1m1 0h3m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h7m2 0h2m1 0h1m1 0h1m1 0h1m2 0h3m-31 1h7m1 0h1m1 0h4m1 0h1m1 0h2m3 0h1m1 0h1m1 0h2m1 0h1m1 0h1"/></svg></div>
       <p class="qr-hint">สแกนด้วยกล้อง iPhone</p>
       <a class="btn ios" href="https://apps.apple.com/th/app/gravity/id6761763533">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.9c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.3 1.2-2.4-.1 0-2.3-.9-2.3-3.5zM14.3 6.3c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/></svg>
-        เปิด App Store
+        ติดตั้งบน iPhone
       </a>
     </div>
 
-    <!-- Android -->
-    <div class="pcard">
+    <div class="pcard and">
       <div class="plogo and">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a4 4 0 0 1 4 4H8a4 4 0 0 1 4-4zm5 5a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM6.5 9.5a1 1 0 0 1 1 1V15a1 1 0 1 1-2 0v-4.5a1 1 0 0 1 1-1zm11 0a1 1 0 0 1 1 1V15a1 1 0 1 1-2 0v-4.5a1 1 0 0 1 1-1zM9 18h1.5v2.5a1 1 0 1 1-2 0V18zm4.5 0H15v2.5a1 1 0 1 1-2 0V18z"/></svg>
       </div>
       <p class="pname">Android</p>
-      <p class="pmeta">APK · Android 7.0+ · ~111 MB</p>
-      <div class="qr-tile" id="qrAnd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" class="segno"><path transform="scale(10)" class="qrline" stroke="#0c1e33" d="M2 2.5h7m1 0h1m2 0h2m2 0h2m1 0h1m1 0h1m2 0h1m3 0h2m1 0h1m3 0h7m-41 1h1m5 0h1m3 0h1m4 0h1m2 0h3m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m2 0h2m1 0h1m3 0h3m1 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h3m3 0h4m2 0h1m2 0h5m2 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h2m3 0h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h1m6 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h2m1 0h2m2 0h1m1 0h1m1 0h4m2 0h2m2 0h1m1 0h2m1 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h1m1 0h1m1 0h6m2 0h2m2 0h1m1 0h1m2 0h1m1 0h2m-33 1h1m3 0h1m1 0h4m3 0h1m1 0h1m1 0h1m1 0h4m1 0h1m4 0h1m2 0h6m2 0h1m-41 1h4m1 0h1m2 0h1m6 0h4m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m3 0h4m1 0h2m-41 1h2m1 0h6m1 0h4m1 0h3m2 0h1m1 0h2m3 0h2m3 0h2m1 0h2m3 0h1m-40 1h1m1 0h1m1 0h1m4 0h3m1 0h1m1 0h3m1 0h5m3 0h5m1 0h1m1 0h2m-38 1h1m1 0h6m2 0h4m3 0h6m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m3 0h1m-40 1h2m3 0h1m1 0h2m1 0h1m1 0h1m3 0h4m3 0h1m1 0h4m1 0h1m2 0h4m1 0h3m-41 1h3m1 0h3m3 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h2m5 0h2m2 0h4m-41 1h2m5 0h2m3 0h1m1 0h1m1 0h6m1 0h2m2 0h3m1 0h2m2 0h1m1 0h1m2 0h1m-40 1h2m3 0h1m1 0h1m1 0h1m3 0h1m2 0h1m3 0h1m2 0h1m3 0h2m2 0h1m2 0h1m1 0h1m-38 1h1m3 0h2m1 0h2m3 0h1m4 0h2m2 0h1m1 0h1m1 0h4m1 0h1m2 0h6m1 0h1m-41 1h4m2 0h2m1 0h3m1 0h2m3 0h1m2 0h4m1 0h2m1 0h1m3 0h3m4 0h1m-40 1h1m1 0h2m2 0h1m1 0h1m2 0h5m4 0h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m-34 1h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h3m5 0h2m-41 1h1m3 0h1m3 0h1m2 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h4m1 0h1m1 0h5m1 0h1m-41 1h2m2 0h1m1 0h1m1 0h2m1 0h1m1 0h3m2 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m-39 1h1m5 0h4m2 0h1m1 0h3m2 0h2m1 0h1m1 0h1m2 0h3m1 0h1m3 0h1m2 0h1m-39 1h3m1 0h2m4 0h4m1 0h1m2 0h4m3 0h1m1 0h1m1 0h3m3 0h1m1 0h1m-40 1h2m1 0h1m1 0h1m2 0h3m1 0h2m2 0h3m4 0h1m2 0h4m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h3m1 0h4m3 0h2m1 0h1m2 0h2m1 0h8m2 0h1m1 0h1m1 0h1m5 0h1m-41 1h1m4 0h1m2 0h2m4 0h2m1 0h5m4 0h2m1 0h9m-38 1h4m2 0h1m1 0h2m1 0h1m1 0h2m2 0h6m1 0h1m4 0h1m2 0h2m5 0h2m-41 1h1m3 0h1m2 0h1m1 0h1m1 0h7m1 0h5m2 0h3m1 0h1m1 0h5m3 0h1m-38 1h6m1 0h1m7 0h1m4 0h5m1 0h1m2 0h2m6 0h1m-39 1h1m5 0h2m2 0h1m1 0h2m1 0h2m2 0h4m1 0h1m2 0h2m2 0h1m3 0h1m-38 1h4m2 0h1m1 0h3m6 0h3m1 0h4m2 0h1m1 0h1m2 0h6m-30 1h5m3 0h1m1 0h1m4 0h1m3 0h3m2 0h1m3 0h3m1 0h1m-41 1h7m1 0h1m2 0h1m2 0h1m1 0h2m2 0h4m2 0h2m3 0h2m1 0h1m1 0h2m2 0h1m-41 1h1m5 0h1m6 0h6m2 0h1m4 0h1m1 0h5m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m3 0h1m3 0h3m3 0h1m4 0h8m2 0h2m-41 1h1m1 0h3m1 0h1m3 0h2m2 0h2m1 0h1m5 0h5m4 0h1m2 0h1m1 0h2m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m2 0h1m1 0h2m2 0h3m2 0h2m4 0h2m3 0h1m2 0h1m-41 1h1m5 0h1m2 0h1m1 0h2m2 0h3m1 0h3m4 0h2m1 0h1m1 0h3m1 0h1m1 0h1m1 0h2m-41 1h7m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m4 0h1m1 0h1m2 0h2m1 0h2m2 0h1"/></svg></div>
+      <p class="pmeta">ติดตั้งตรง · Android 7.0+ · ~111 MB</p>
+      <div class="qr-tile" id="qrAnd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" class="segno"><path transform="scale(10)" class="qrline" stroke="#0b1c30" d="M2 2.5h7m1 0h1m2 0h2m2 0h2m1 0h1m1 0h1m2 0h1m3 0h2m1 0h1m3 0h7m-41 1h1m5 0h1m3 0h1m4 0h1m2 0h3m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m2 0h2m1 0h1m3 0h3m1 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h3m3 0h4m2 0h1m2 0h5m2 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h2m3 0h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h1m6 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h2m1 0h2m2 0h1m1 0h1m1 0h4m2 0h2m2 0h1m1 0h2m1 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h1m1 0h1m1 0h6m2 0h2m2 0h1m1 0h1m2 0h1m1 0h2m-33 1h1m3 0h1m1 0h4m3 0h1m1 0h1m1 0h1m1 0h4m1 0h1m4 0h1m2 0h6m2 0h1m-41 1h4m1 0h1m2 0h1m6 0h4m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m3 0h4m1 0h2m-41 1h2m1 0h6m1 0h4m1 0h3m2 0h1m1 0h2m3 0h2m3 0h2m1 0h2m3 0h1m-40 1h1m1 0h1m1 0h1m4 0h3m1 0h1m1 0h3m1 0h5m3 0h5m1 0h1m1 0h2m-38 1h1m1 0h6m2 0h4m3 0h6m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m3 0h1m-40 1h2m3 0h1m1 0h2m1 0h1m1 0h1m3 0h4m3 0h1m1 0h4m1 0h1m2 0h4m1 0h3m-41 1h3m1 0h3m3 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h2m5 0h2m2 0h4m-41 1h2m5 0h2m3 0h1m1 0h1m1 0h6m1 0h2m2 0h3m1 0h2m2 0h1m1 0h1m2 0h1m-40 1h2m3 0h1m1 0h1m1 0h1m3 0h1m2 0h1m3 0h1m2 0h1m3 0h2m2 0h1m2 0h1m1 0h1m-38 1h1m3 0h2m1 0h2m3 0h1m4 0h2m2 0h1m1 0h1m1 0h4m1 0h1m2 0h6m1 0h1m-41 1h4m2 0h2m1 0h3m1 0h2m3 0h1m2 0h4m1 0h2m1 0h1m3 0h3m4 0h1m-40 1h1m1 0h2m2 0h1m1 0h1m2 0h5m4 0h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m-34 1h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h3m5 0h2m-41 1h1m3 0h1m3 0h1m2 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h4m1 0h1m1 0h5m1 0h1m-41 1h2m2 0h1m1 0h1m1 0h2m1 0h1m1 0h3m2 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m-39 1h1m5 0h4m2 0h1m1 0h3m2 0h2m1 0h1m1 0h1m2 0h3m1 0h1m3 0h1m2 0h1m-39 1h3m1 0h2m4 0h4m1 0h1m2 0h4m3 0h1m1 0h1m1 0h3m3 0h1m1 0h1m-40 1h2m1 0h1m1 0h1m2 0h3m1 0h2m2 0h3m4 0h1m2 0h4m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h3m1 0h4m3 0h2m1 0h1m2 0h2m1 0h8m2 0h1m1 0h1m1 0h1m5 0h1m-41 1h1m4 0h1m2 0h2m4 0h2m1 0h5m4 0h2m1 0h9m-38 1h4m2 0h1m1 0h2m1 0h1m1 0h2m2 0h6m1 0h1m4 0h1m2 0h2m5 0h2m-41 1h1m3 0h1m2 0h1m1 0h1m1 0h7m1 0h5m2 0h3m1 0h1m1 0h5m3 0h1m-38 1h6m1 0h1m7 0h1m4 0h5m1 0h1m2 0h2m6 0h1m-39 1h1m5 0h2m2 0h1m1 0h2m1 0h2m2 0h4m1 0h1m2 0h2m2 0h1m3 0h1m-38 1h4m2 0h1m1 0h3m6 0h3m1 0h4m2 0h1m1 0h1m2 0h6m-30 1h5m3 0h1m1 0h1m4 0h1m3 0h3m2 0h1m3 0h3m1 0h1m-41 1h7m1 0h1m2 0h1m2 0h1m1 0h2m2 0h4m2 0h2m3 0h2m1 0h1m1 0h2m2 0h1m-41 1h1m5 0h1m6 0h6m2 0h1m4 0h1m1 0h5m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m3 0h1m3 0h3m3 0h1m4 0h8m2 0h2m-41 1h1m1 0h3m1 0h1m3 0h2m2 0h2m1 0h1m5 0h5m4 0h1m2 0h1m1 0h2m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m2 0h1m1 0h2m2 0h3m2 0h2m4 0h2m3 0h1m2 0h1m-41 1h1m5 0h1m2 0h1m1 0h2m2 0h3m1 0h3m4 0h2m1 0h1m1 0h3m1 0h1m1 0h1m1 0h2m-41 1h7m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m4 0h1m1 0h1m2 0h2m1 0h2m2 0h1"/></svg></div>
       <p class="qr-hint">สแกนด้วยกล้อง Android</p>
       <a class="btn and" href="https://firebasestorage.googleapis.com/v0/b/gravity-3a019.firebasestorage.app/o/gravity.apk?alt=media">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-        ดาวน์โหลด APK
+        <span>ติดตั้งบนแอนดรอยด์<small>โหลดไฟล์แล้วกดติดตั้ง</small></span>
       </a>
     </div>
   </div>
 
   <div class="note fade">
-    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg> ติดตั้ง APK บน Android</h3>
+    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg> วิธีติดตั้งบนแอนดรอยด์</h3>
     <p>เมื่อโหลดเสร็จ ถ้าเครื่องเตือน ให้กด <kbd>ตั้งค่า</kbd> แล้วเปิด <kbd>อนุญาตจากแหล่งนี้</kbd> → กดติดตั้ง (เป็นขั้นตอนปกติของแอปที่ติดตั้งนอก Play Store)</p>
+  </div>
+
+  <div class="feat-wrap fade">
+    <h3 class="sect-title">ทำอะไรได้บ้าง</h3>
+    <div class="features">
+      <div class="feat">
+        <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+        <div><h4>ขอความช่วยเหลือใน 2–3 แตะ</h4><p>เลือกความเร่งด่วน แนบรูป/วิดีโอ ปักหมุดตำแหน่งจริง ส่งได้ทันที</p></div>
+      </div>
+      <div class="feat">
+        <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+        <div><h4>ทุกอย่างในแผนที่เดียว</h4><p>เห็นคนที่กำลังรอ อาสาที่ลงพื้นที่ จุดพักพิง และเส้นทางอันตราย พร้อมกัน</p></div>
+      </div>
+      <div class="feat">
+        <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.5-7 9-4-1.5-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><h4>อาสาที่ยืนยันตัวตน</h4><p>เห็นเบอร์ผู้ประสบภัย รับเคส และติดต่อกันเองยามฉุกเฉิน (ชื่อ·ทีม·เบอร์)</p></div>
+      </div>
+      <div class="feat">
+        <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>
+        <div><h4>จุดพักพิง · อาหาร · ชาร์จไฟ</h4><p>อาสาปักหมุดศูนย์พักพิง จุดแจกอาหาร จุดแพทย์ ให้หาที่ปลอดภัยใกล้ตัว</p></div>
+      </div>
+      <div class="feat">
+        <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+        <div><h4>แจ้งเส้นทางอันตราย</h4><p>ถนนขาด สะพานพัง น้ำท่วมสูง — เห็นเป็นสัญลักษณ์ หลีกเลี่ยงได้ทัน</p></div>
+      </div>
+      <div class="feat">
+        <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span>
+        <div><h4>ใช้ฟรี ไม่ต้องล็อกอิน</h4><p>เข้าช่วยได้ทันทีในภาวะฉุกเฉิน เบอร์โทรถูกปกปิด เห็นเฉพาะอาสาที่ยืนยันตัว</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mission fade">
+    <div class="heart">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7-4.5-9.3-9.2C1.2 8.6 2.7 5 6 5c2 0 3.2 1.2 4 2.3C10.8 6.2 12 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.5 12 21 12 21z"/></svg>
+    </div>
+    <h2>ทำด้วยใจ — เพื่อคนน่าน</h2>
+    <p>โหมดภัยพิบัติเกิดขึ้นในคืนที่น้ำกำลังจะเข้าตัวเมืองน่าน เพราะเราเห็นว่าการขอความช่วยเหลือกระจัดกระจาย คนที่อยากช่วยก็ไม่รู้จะเริ่มตรงไหน เราเลยตั้งใจรวมทุกอย่างไว้ในแผนที่เดียว — ขอความช่วยเหลือ เห็นคนที่กำลังรอ อาสาที่พร้อมลงพื้นที่ และจุดพักพิง เปิดให้ทุกคนใช้ฟรี ไม่ต้องล็อกอิน ด้วยความหวังเล็ก ๆ ว่ามันจะช่วยให้เราทุกคนผ่านช่วงเวลานี้ไปด้วยกัน</p>
+    <p class="sign">— ด้วยความเป็นห่วง จากทีม Gravity</p>
   </div>
 
   <div class="trust fade">
