@@ -58,8 +58,8 @@
   <div class="ref" id="ref"></div>
 
   <div class="actions">
-    <a class="btn primary" id="store" href="https://gravityconnect.app">เปิดในแอป Gravity</a>
-    <a class="btn ghost" id="other" href="https://gravityconnect.app">ดาวน์โหลดแอป</a>
+    <a class="btn primary" id="store" href="https://gravityconnect.app">ติดตั้งแอป Gravity</a>
+    <a class="btn ghost" id="other" href="https://gravityconnect.app">ใช้ iPhone?</a>
   </div>
 
   <div class="home"><a href="/">กลับหน้าแรก</a></div>
@@ -79,8 +79,8 @@
 
   // /p/{postId} — โพสต์
   if ((m = path.match(/^\/p\/(.+)$/))) {
-    title.textContent = 'เปิดโพสต์นี้ในแอป Gravity';
-    desc.textContent = 'ตอนนี้ยังต้องเปิดผ่านแอป — อีกไม่นานหน้านี้จะแสดงเนื้อหาให้อ่านได้เลย';
+    title.textContent = 'โพสต์นี้อยู่ในแอป Gravity';
+    desc.textContent = 'ติดตั้ง Gravity แล้วเปิดแอปเพื่อดูโพสต์นี้';
     ref.textContent = m[1];
   }
   // /a/{areaId} — พื้นที่
@@ -100,9 +100,15 @@
     document.getElementById('store').className = 'btn ghost';
   }
 
+  // ⚠️ หน้านี้เปิดแอปเองไม่ได้ — แอปยังไม่มี App Links / Universal Links
+  //    ปุ่มจึงต้องบอกปลายทางจริงตั้งแต่ก่อนกด ไม่ใช่เขียนว่า "เปิดในแอป"
+  //    แล้วพาไปหน้าโหลดแอป ซึ่งคนกดจะงงว่าตัวเองทำอะไรผิด
+  //    เมื่อ App Links ขึ้นแล้ว คนที่มีแอปจะไม่เห็นหน้านี้อีกเลย
+  //    ระบบปฏิบัติการจะพาเข้าแอปก่อนเบราว์เซอร์จะโหลดหน้านี้ด้วยซ้ำ
   var store = document.getElementById('store');
   var other = document.getElementById('other');
   store.href = isIOS ? APP_STORE : PLAY;
+  store.textContent = isIOS ? 'ติดตั้งจาก App Store' : 'ติดตั้งจาก Play Store';
   other.href = isIOS ? PLAY : APP_STORE;
   other.textContent = isIOS ? 'ใช้ Android?' : 'ใช้ iPhone?';
 
