@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["YR9YY2UGP8.com.gravity.connect"],
+        "components": [
+          { "/": "/p/*", "comment": "โพสต์" },
+          { "/": "/@*", "comment": "โปรไฟล์" }
+        ]
+      }
+    ]
+  }
+}
