@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.gravity.connect",
+      "sha256_cert_fingerprints": [
+        "D5:9E:C6:78:0F:2B:BE:BF:32:00:3A:26:A2:16:31:EA:7C:C8:C9:28:74:E8:41:5C:1D:E2:B4:6A:59:CB:C7:FE"
+      ]
+    }
+  }
+]
