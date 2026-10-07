@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gravity — เชื่อมคนใกล้กัน</title>
+    <title>Gravity — ดูว่าแถวนี้มีอะไรเกิดขึ้นบ้าง</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&family=Kanit:wght@300;400;600&display=swap">
@@ -105,6 +105,26 @@
         .gv-type h4 { font-family: 'Kanit', sans-serif; font-size: 0.88em; font-weight: 600; margin-bottom: 6px; }
         .gv-type p { font-size: 0.75em; color: rgba(255,255,255,0.35); line-height: 1.5; }
 
+        /* ลายการ์ดทั้งหมด */
+        .gv-gallery { margin-bottom: 60px; }
+        .gv-gallery h3 { font-family: 'Kanit', sans-serif; font-size: 1em; font-weight: 300; letter-spacing: 3px;
+                         color: rgba(255,255,255,0.5); text-align: center; margin-bottom: 8px; }
+        .gv-gallery-sub { text-align: center; color: rgba(255,255,255,0.3); font-size: 0.82em; margin-bottom: 30px; }
+        .gv-tier { margin-bottom: 32px; }
+        .gv-tier:last-child { margin-bottom: 0; }
+        .gv-tier-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px;
+                        padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .gv-tier-name { font-family: 'Kanit', sans-serif; font-size: 0.9em; font-weight: 600; letter-spacing: 1px; }
+        .gv-tier-note { font-size: 0.75em; color: rgba(255,255,255,0.35); }
+        .gv-tier-count { margin-left: auto; font-size: 0.72em; color: rgba(255,255,255,0.25);
+                         font-variant-numeric: tabular-nums; }
+        .gv-skins { display: grid; grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 12px; }
+        /* contain ไม่ใช่ cover — หน้านี้มีไว้โชว์ลาย การครอปจึงตัดของที่คนมาดูทิ้ง
+           (gv01 สัดส่วนต่างจากใบอื่นเล็กน้อย จะเหลือขอบบางๆ แทนที่จะโดนตัด) */
+        .gv-skins img { width: 100%; aspect-ratio: 2 / 3; object-fit: contain; display: block;
+                        border-radius: 10px; background: rgba(255,255,255,0.03);
+                        border: 1px solid rgba(255,255,255,0.08); }
+
         .gv-how { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
                   border-radius: 20px; padding: 36px 32px; }
         .gv-how h3 { font-family: 'Kanit', sans-serif; font-size: 0.95em; font-weight: 300; letter-spacing: 3px; color: rgba(255,255,255,0.5);
@@ -170,7 +190,7 @@
     <div class="logo"><img src="logo.jpg" alt="Gravity Logo"></div>
     <h1>GRAVITY</h1>
     <div class="divider"></div>
-    <p class="tagline"><span data-th>ทุกเรื่องราว รอบตัวคุณ</span><span data-en>EVERYTHING HAPPENING AROUND YOU</span></p>
+    <p class="tagline"><span data-th>ดูว่าแถวนี้มีอะไรเกิดขึ้นบ้าง</span><span data-en>SEE WHAT'S HAPPENING AROUND HERE</span></p>
     <p class="hero-desc">
         <span data-th>แพลตฟอร์มโซเชียลที่เชื่อมผู้คนผ่านความใกล้ในโลกจริง — แลก Gravity Card ดิจิทัล ค้นพบเรื่องราวใกล้ตัว และสร้างความสัมพันธ์ที่มีความหมาย</span>
         <span data-en>A social platform that connects people through real-world proximity. Exchange digital Gravity Cards, discover stories nearby, and build meaningful connections.</span>
@@ -180,7 +200,7 @@
         <div class="feature">
             <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2"/><path d="M14 10h4M14 14H7"/></svg></div>
             <h3>Gravity Cards</h3>
-            <p><span data-th>สะสมและแลกเปลี่ยนการ์ดดิจิทัลดีไซน์สวย พร้อมสกินไม่ซ้ำใคร</span><span data-en>Collect and exchange beautifully designed digital cards with unique skins</span></p>
+            <p><span data-th>สะสมและแลกเปลี่ยนการ์ดดิจิทัลดีไซน์สวย ลายการ์ดไม่ซ้ำใคร</span><span data-en>Collect and exchange beautifully designed digital cards, no two alike</span></p>
         </div>
         <div class="feature">
             <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
@@ -225,7 +245,7 @@
         <div class="gv-card">
             <div class="gv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-6M4 11V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 15h6M9 11h6M17 16h6"/></svg></div>
             <h3><span data-th>ปรับแต่งได้เต็มที่</span><span data-en>FULLY CUSTOMIZABLE</span></h3>
-            <p><span data-th>เลือกธีม สกินพื้นหลัง สีเน้น และเลย์เอาต์ได้หลากหลาย ให้การ์ดเป็นตัวคุณ</span><span data-en>Choose from a wide variety of themes, background skins, accent colors, and layouts to make your Gravity Card uniquely yours.</span></p>
+            <p><span data-th>เลือกธีม ลายการ์ด สีเน้น และเลย์เอาต์ได้หลากหลาย ให้การ์ดเป็นตัวคุณ</span><span data-en>Choose from a wide variety of themes, card designs, accent colors, and layouts to make your Gravity Card uniquely yours.</span></p>
         </div>
         <div class="gv-card">
             <div class="gv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg></div>
@@ -239,8 +259,8 @@
         </div>
         <div class="gv-card">
             <div class="gv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 6.2L21 11l-6.2 2.3L12 21l-2.3-6.7L3 11l6.7-1.8z"/></svg></div>
-            <h3><span data-th>สกินพรีเมียม</span><span data-en>PREMIUM SKINS</span></h3>
-            <p><span data-th>ปลดล็อกดีไซน์พิเศษและสกินหายาก แสดงสไตล์ของคุณให้โดดเด่น</span><span data-en>Unlock exclusive card designs and rare skins to stand out. Express your style with premium visual themes.</span></p>
+            <h3><span data-th>การ์ดพรีเมียม</span><span data-en>PREMIUM CARDS</span></h3>
+            <p><span data-th>ปลดล็อกดีไซน์พิเศษและการ์ดหายาก แสดงสไตล์ของคุณให้โดดเด่น</span><span data-en>Unlock exclusive designs and rare cards to stand out. Express your style with premium visual themes.</span></p>
         </div>
     </div>
 
@@ -265,6 +285,59 @@
         </div>
     </div>
 
+
+    <div class="gv-gallery">
+        <h3><span data-th>ลายการ์ดทั้งหมด</span><span data-en>EVERY CARD DESIGN</span></h3>
+        <p class="gv-gallery-sub"><span data-th>17 ลาย · ใช้ได้ฟรี 10 ลาย</span><span data-en>17 designs · 10 of them free</span></p>
+
+        <div class="gv-tier">
+            <div class="gv-tier-head">
+                <span class="gv-tier-name" style="color:rgba(255,255,255,0.82)"><span data-th>ฟรี</span><span data-en>FREE</span></span>
+                <span class="gv-tier-note"><span data-th>ใช้ได้ทุกคน</span><span data-en>for everyone</span></span>
+                <span class="gv-tier-count">10</span>
+            </div>
+            <div class="gv-skins">
+                <img src="cards/gv02.jpg" alt="ลายการ์ด Gravity gv02" loading="lazy">
+                <img src="cards/gv03.jpg" alt="ลายการ์ด Gravity gv03" loading="lazy">
+                <img src="cards/gv06.jpg" alt="ลายการ์ด Gravity gv06" loading="lazy">
+                <img src="cards/gv07.jpg" alt="ลายการ์ด Gravity gv07" loading="lazy">
+                <img src="cards/gv10.jpg" alt="ลายการ์ด Gravity gv10" loading="lazy">
+                <img src="cards/gv11.jpg" alt="ลายการ์ด Gravity gv11" loading="lazy">
+                <img src="cards/gv12.jpg" alt="ลายการ์ด Gravity gv12" loading="lazy">
+                <img src="cards/gv13.jpg" alt="ลายการ์ด Gravity gv13" loading="lazy">
+                <img src="cards/gv14.jpg" alt="ลายการ์ด Gravity gv14" loading="lazy">
+                <img src="cards/gv15.jpg" alt="ลายการ์ด Gravity gv15" loading="lazy">
+            </div>
+        </div>
+
+        <div class="gv-tier">
+            <div class="gv-tier-head">
+                <span class="gv-tier-name" style="color:#FFB300"><span data-th>Pro</span><span data-en>Pro</span></span>
+                <span class="gv-tier-note"><span data-th>59 บาท / ใบ</span><span data-en>59 THB each</span></span>
+                <span class="gv-tier-count">4</span>
+            </div>
+            <div class="gv-skins">
+                <img src="cards/gv01vip1.jpg" alt="ลายการ์ด Gravity gv01vip1" loading="lazy">
+                <img src="cards/gv04vip1.jpg" alt="ลายการ์ด Gravity gv04vip1" loading="lazy">
+                <img src="cards/gv05vip1.jpg" alt="ลายการ์ด Gravity gv05vip1" loading="lazy">
+                <img src="cards/gv09vip1.jpg" alt="ลายการ์ด Gravity gv09vip1" loading="lazy">
+            </div>
+        </div>
+
+        <div class="gv-tier">
+            <div class="gv-tier-head">
+                <span class="gv-tier-name" style="color:#C9A7FF"><span data-th>Ultra</span><span data-en>Ultra</span></span>
+                <span class="gv-tier-note"><span data-th>199 บาท / ใบ</span><span data-en>199 THB each</span></span>
+                <span class="gv-tier-count">3</span>
+            </div>
+            <div class="gv-skins">
+                <img src="cards/gv08vip2.jpg" alt="ลายการ์ด Gravity gv08vip2" loading="lazy">
+                <img src="cards/gv16vip2.jpg" alt="ลายการ์ด Gravity gv16vip2" loading="lazy">
+                <img src="cards/gv17vip2.jpg" alt="ลายการ์ด Gravity gv17vip2" loading="lazy">
+            </div>
+        </div>
+    </div>
+
     <div class="gv-how">
         <h3><span data-th>วิธีใช้งาน</span><span data-en>HOW IT WORKS</span></h3>
         <div class="gv-steps">
@@ -272,7 +345,7 @@
                 <div class="gv-step-num">1</div>
                 <div class="gv-step-text">
                     <h4><span data-th>ออกแบบการ์ดของคุณ</span><span data-en>Design your Gravity Card</span></h4>
-                    <p><span data-th>ใส่ชื่อ รูป ไบโอ และเลือกสกินที่เข้ากับตัวคุณ</span><span data-en>Customize your card with your name, photo, bio, and choose a skin that matches your personality.</span></p>
+                    <p><span data-th>ใส่ชื่อ รูป ไบโอ และเลือกลายการ์ดที่เข้ากับตัวคุณ</span><span data-en>Customize your card with your name, photo, bio, and choose a design that matches your personality.</span></p>
                 </div>
             </div>
             <div class="gv-step">
@@ -392,16 +465,16 @@
       <div class="ci-num">1</div>
       <div class="ci-body">
         <h3>สินค้า/บริการที่จำหน่าย</h3>
-        <p>การ์ดดิจิทัลพรีเมียม (Gravity Card) — สกินการ์ดแบบพิเศษภายในแอปพลิเคชัน Gravity Connect สำหรับใช้แสดงตัวตนและแลกเปลี่ยนกับผู้อื่น</p>
+        <p>การ์ดดิจิทัลพรีเมียม (Gravity Card) — การ์ดลายพิเศษภายในแอปพลิเคชัน Gravity Connect สำหรับใช้แสดงตัวตนและแลกเปลี่ยนกับผู้อื่น</p>
         <div class="product">
           <div class="product-imgs">
-            <img src="cards/gv01vip1.png" alt="การ์ด Pro"><img src="cards/gv04vip1.png" alt="การ์ด Pro"><img src="cards/gv05vip1.png" alt="การ์ด Pro"><img src="cards/gv09vip1.png" alt="การ์ด Pro">
+            <img src="cards/gv01vip1.jpg" alt="การ์ด Pro"><img src="cards/gv04vip1.jpg" alt="การ์ด Pro"><img src="cards/gv05vip1.jpg" alt="การ์ด Pro"><img src="cards/gv09vip1.jpg" alt="การ์ด Pro">
           </div>
           <div class="product-info"><div class="product-name">การ์ด Pro</div><div class="product-price">59 บาท / ใบ</div></div>
         </div>
         <div class="product">
           <div class="product-imgs">
-            <img src="cards/gv08vip2.png" alt="การ์ด Ultra"><img src="cards/gv16vip2.png" alt="การ์ด Ultra"><img src="cards/gv17vip2.png" alt="การ์ด Ultra">
+            <img src="cards/gv08vip2.jpg" alt="การ์ด Ultra"><img src="cards/gv16vip2.jpg" alt="การ์ด Ultra"><img src="cards/gv17vip2.jpg" alt="การ์ด Ultra">
           </div>
           <div class="product-info"><div class="product-name">การ์ด Ultra</div><div class="product-price">199 บาท / ใบ</div></div>
         </div>
