@@ -28,6 +28,14 @@
             background: linear-gradient(to bottom, rgba(2,12,24,0.3) 0%, rgba(2,12,24,0.6) 50%, rgba(2,12,24,0.95) 80%, #020C18 100%),
                         url('cover.jpg') center top / cover no-repeat;
         }
+        /* ภาพพื้นหลัง 1920px หนัก 651 KB ซึ่งบนเน็ตมือถือคือการรอเปล่าๆ
+           จอแคบมองไม่เห็นรายละเอียดขนาดนั้นอยู่แล้ว — ส่งไฟล์ 1000px (234 KB) แทน */
+        @media (max-width: 760px) {
+            .hero {
+                background: linear-gradient(to bottom, rgba(2,12,24,0.3) 0%, rgba(2,12,24,0.6) 50%, rgba(2,12,24,0.95) 80%, #020C18 100%),
+                            url('cover-mobile.jpg') center top / cover no-repeat;
+            }
+        }
         .logo { width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
                 box-shadow: 0 0 40px rgba(255,179,0,0.15), 0 0 80px rgba(0,200,255,0.08);
                 margin-bottom: 30px; }
@@ -50,7 +58,11 @@
         .download { margin: 40px 0 60px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center; }
         .badge-link { display: inline-block; transition: transform 0.2s, opacity 0.2s; }
         .badge-link:hover { transform: translateY(-3px); opacity: 0.85; }
-        .badge-link img { height: 52px; width: auto; display: block; }
+        .badge-link { max-width: 100%; }
+        .badge-link img { height: 52px; width: auto; max-width: 100%; display: block; }
+        /* ปุ่มอีเมลติดต่อยาว 301px จากตัวอีเมลเอง ซึ่งล้นจอ 320px ไป 5px
+           ทำให้ทั้งหน้าเลื่อนแนวนอนได้ — ยอมให้ตัวอีเมลตัดบรรทัดแทน */
+        a[href^="mailto:"] { max-width: 100%; overflow-wrap: anywhere; }
 
         /* Flood banner */
         .flood-banner { display: inline-flex; align-items: center; gap: 10px; margin-top: 6px;
@@ -80,7 +92,11 @@
         .gv-intro { color: rgba(255,255,255,0.55); line-height: 1.9; font-size: 0.95em;
                     text-align: center; max-width: 600px; margin: 0 auto 60px; }
 
-        .gv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-bottom: 60px; }
+        /* 4 ช่อง → 2×2 เสมอ
+           เดิมใช้ auto-fit ซึ่งพอจอกว้างพอก็ยัดได้ 3 ช่อง เหลือช่องที่ 4
+           ห้อยอยู่บรรทัดล่างคนเดียว — 4 อย่างที่เท่ากันต้องวางให้เท่ากัน */
+        .gv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 60px; }
+        @media (max-width: 560px) { .gv-grid { grid-template-columns: 1fr; } }
         .gv-card {
             background: linear-gradient(135deg, rgba(255,179,0,0.06), rgba(0,200,255,0.04));
             border: 1px solid rgba(255,179,0,0.15);
@@ -118,7 +134,10 @@
         .gv-tier-note { font-size: 0.75em; color: rgba(255,255,255,0.35); }
         .gv-tier-count { margin-left: auto; font-size: 0.72em; color: rgba(255,255,255,0.25);
                          font-variant-numeric: tabular-nums; }
-        .gv-skins { display: grid; grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 12px; }
+        .gv-skins { display: grid; gap: 12px;
+                     /* min() กันกรณีจอแคบกว่าคอลัมน์ขั้นต่ำ ซึ่งจะดัน
+                        ให้หน้าเลื่อนแนวนอนได้ไม่กี่พิกเซลแต่เห็นชัด */
+                     grid-template-columns: repeat(auto-fill, minmax(min(116px, 100%), 1fr)); }
         /* contain ไม่ใช่ cover — หน้านี้มีไว้โชว์ลาย การครอปจึงตัดของที่คนมาดูทิ้ง
            (gv01 สัดส่วนต่างจากใบอื่นเล็กน้อย จะเหลือขอบบางๆ แทนที่จะโดนตัด) */
         .gv-skins img { width: 100%; aspect-ratio: 2 / 3; object-fit: contain; display: block;
@@ -288,7 +307,7 @@
 
     <div class="gv-gallery">
         <h3><span data-th>ลายการ์ดทั้งหมด</span><span data-en>EVERY CARD DESIGN</span></h3>
-        <p class="gv-gallery-sub"><span data-th>17 ลาย · ใช้ได้ฟรี 10 ลาย</span><span data-en>17 designs · 10 of them free</span></p>
+        <p class="gv-gallery-sub"><span data-th>21 ลาย · ใช้ได้ฟรี 10 ลาย</span><span data-en>21 designs · 10 of them free</span></p>
 
         <div class="gv-tier">
             <div class="gv-tier-head">
@@ -321,6 +340,20 @@
                 <img src="cards/gv04vip1.jpg" alt="ลายการ์ด Gravity gv04vip1" loading="lazy">
                 <img src="cards/gv05vip1.jpg" alt="ลายการ์ด Gravity gv05vip1" loading="lazy">
                 <img src="cards/gv09vip1.jpg" alt="ลายการ์ด Gravity gv09vip1" loading="lazy">
+            </div>
+        </div>
+
+        <div class="gv-tier">
+            <div class="gv-tier-head">
+                <span class="gv-tier-name" style="color:#FF8A3D"><span data-th>Halloween</span><span data-en>Halloween</span></span>
+                <span class="gv-tier-note"><span data-th>89 บาท / ใบ · ชุดตามเทศกาล</span><span data-en>89 THB each · seasonal set</span></span>
+                <span class="gv-tier-count">4</span>
+            </div>
+            <div class="gv-skins">
+                <img src="cards/hlw01.jpg" alt="ลายการ์ด Gravity Halloween hlw01" loading="lazy">
+                <img src="cards/hlw02.jpg" alt="ลายการ์ด Gravity Halloween hlw02" loading="lazy">
+                <img src="cards/hlw03.jpg" alt="ลายการ์ด Gravity Halloween hlw03" loading="lazy">
+                <img src="cards/hlw04.jpg" alt="ลายการ์ด Gravity Halloween hlw04" loading="lazy">
             </div>
         </div>
 
@@ -474,6 +507,12 @@
         </div>
         <div class="product">
           <div class="product-imgs">
+            <img src="cards/hlw01.jpg" alt="การ์ด Halloween"><img src="cards/hlw02.jpg" alt="การ์ด Halloween"><img src="cards/hlw03.jpg" alt="การ์ด Halloween"><img src="cards/hlw04.jpg" alt="การ์ด Halloween">
+          </div>
+          <div class="product-info"><div class="product-name">การ์ด Halloween</div><div class="product-price">89 บาท / ใบ</div></div>
+        </div>
+        <div class="product">
+          <div class="product-imgs">
             <img src="cards/gv08vip2.jpg" alt="การ์ด Ultra"><img src="cards/gv16vip2.jpg" alt="การ์ด Ultra"><img src="cards/gv17vip2.jpg" alt="การ์ด Ultra">
           </div>
           <div class="product-info"><div class="product-name">การ์ด Ultra</div><div class="product-price">199 บาท / ใบ</div></div>
@@ -494,7 +533,7 @@
     </div>
     <div class="ci-item">
       <div class="ci-num">5</div>
-      <div class="ci-body"><h3>ราคาสินค้า</h3><ul><li>การ์ด Pro — 59 บาท / ใบ</li><li>การ์ด Ultra — 199 บาท / ใบ</li></ul></div>
+      <div class="ci-body"><h3>ราคาสินค้า</h3><ul><li>การ์ด Pro — 59 บาท / ใบ</li><li>การ์ด Halloween — 89 บาท / ใบ</li><li>การ์ด Ultra — 199 บาท / ใบ</li></ul></div>
     </div>
   </div>
 </section>
